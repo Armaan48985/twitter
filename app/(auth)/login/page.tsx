@@ -1,30 +1,18 @@
 ﻿"use client";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
-import { logOut, loginWithGoogle } from "../../../../backend/login";
+import { logOut, loginWithGoogle, supabase } from "../login";
 
 const LoginPage = () => {
   const [userData, setUserData] = useState(null);
 
   const handleGoogleLogin = async () => {
     try {
-      await loginWithGoogle({ setDataGoogle: setUserData });
-      console.log("working");
+      await loginWithGoogle();
     } catch (error: any) {
       console.error("Error logging in with Google:", error.message);
     }
   };
-
-  const handleLogout = async () => {
-    try {
-      await logOut();
-      setUserData(null);
-    } catch (error: any) {
-      console.error("Error logging out:", error.message);
-    }
-  };
-
-  console.log(userData);
 
   return (
     <div className="w-full min-h-screen flex-center">

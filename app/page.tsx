@@ -1,19 +1,13 @@
-"use client";
+'use client'
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import Homee from './(root)/home/page'
 import { useSelector } from "react-redux";
+import { createClient } from "@supabase/supabase-js";
+import {headers} from 'next/headers'
+import { useEffect, useState } from "react";
 
 export default function Home() {
-
-  const user = useSelector((e:any) => e.userId);
-  const route = useRouter()
-
-  if(!user){
-    route.push('/login')
-  }else{
-    route.push('/home')
-  }
 
 
   return <Homee/>;

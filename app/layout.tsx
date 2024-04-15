@@ -6,7 +6,8 @@ import Sidebar from "@/components/Sidebar";
 import { Providers } from "./GlobalReducer/Provider";
 import { useSelector } from "react-redux";
 import { RootState } from "./GlobalReducer/store";
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
+import { createClient } from "@supabase/supabase-js";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -21,7 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
 
-  const a = usePathname();
+  const a = usePathname()
+
 
   return (
     <Providers>

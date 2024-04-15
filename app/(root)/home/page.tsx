@@ -1,5 +1,5 @@
 ﻿'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Tabs,
   TabsContent,
@@ -17,11 +17,16 @@ import { MdOutlineGifBox } from 'react-icons/md'
 import { TfiList } from 'react-icons/tfi'
 import { PiSmileyLight } from 'react-icons/pi'
 import { LuCalendarClock } from 'react-icons/lu'
+import { createClient } from "@supabase/supabase-js";
+// import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Button } from '@/components/ui/button'
+import { logOut } from '@/app/(auth)/login'
+import { redirect } from 'next/navigation'
+
 
 
 const page = () => {
-
-  const [UserData, setUserData] = useState([])
 
   return (
       <main className='flex'>
@@ -34,7 +39,7 @@ const page = () => {
                 <span className='absolute right-5 text-xl hover:bg-gray-900 p-2 rounded-full'><IoSettingsOutline /></span>
               </TabsList>
 
-              <TabsContent value="account">
+              <TabsContent value="account" className='flex-col'>
                 <div className='w-full h-auto border-b-[1px] border-[#3A4249] p-4 flex'>
                   <div className='w-[50px] h-full'>
                     <span className='bg-gray-700 text-[10px] p-3 rounded-full'>img</span>
@@ -57,9 +62,11 @@ const page = () => {
 
                           <PostButton name="Post"/>
                       </div>
-                  </div> 
-                </div>
-                asdf
+
+                      </div> 
+                    </div>
+                
+                      
 
               </TabsContent>
               <TabsContent value="password">
@@ -75,7 +82,9 @@ const page = () => {
           </div>
         </section>
 
-        <RightSidebar options={UserData}/>
+        {/* <RightSidebar options={UserData}/> */}
+
+        <Button variant="default" className='absolute right-0 top-0' onClick={() => {}}>LogOut</Button>
       </main>
   )
 }
