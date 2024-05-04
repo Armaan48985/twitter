@@ -8,7 +8,5 @@ import {headers} from 'next/headers'
 import { useEffect, useState } from "react";
 
 export default function Home() {
-
-
   return <Homee/>;
 }
